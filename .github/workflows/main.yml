@@ -12,14 +12,14 @@ env:
   RUN_REGION: us-central1
   SERVICE_NAME: helloworld-python
 
-job:
-  setup-build-deploy:
-    name: Setup, Build, and Deploy
-    runs-on: ubuntu-latest
+# job:
+  # setup-build-deploy:
+   # name: Setup, Build, and Deploy
+   # runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+    # steps:
+    # - name: Checkout
+      # uses: actions/checkout@v3
 
     # Setup gcloud CLI
     job:
