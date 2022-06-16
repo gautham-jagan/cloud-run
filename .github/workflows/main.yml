@@ -12,7 +12,7 @@ env:
   RUN_REGION: us-central1
   SERVICE_NAME: helloworld-python
 
-jobs:
+job:
   setup-build-deploy:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
