@@ -12,30 +12,21 @@ env:
   RUN_REGION: us-central1
   SERVICE_NAME: helloworld-python
 
-# job:
-  # setup-build-deploy:
-   # name: Setup, Build, and Deploy
-   # runs-on: ubuntu-latest
+jobs:
+  setup-build-deploy:
+    name: Setup, Build, and Deploy
+    runs-on: ubuntu-latest
 
-    # steps:
-    # - name: Checkout
-      # uses: actions/checkout@v3
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
 
     # Setup gcloud CLI
-    job:
-      job_id:
-        steps:
-        - id: 'auth'
-          uses: 'google-github-actions/auth@v0'
-          with:
-            credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
-
-        - name: 'Set up Cloud SDK'
-          uses: 'google-github-actions/setup-gcloud@v0'
-
-        - name: 'Use gcloud CLI'
-          run: 'gcloud info'
- 
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '290.0.1'
+        service_account_key: ${{ secrets.RUN_SA_KEY }}
+        project_id: ${{ secrets.RUN_PROJECT }}
 
     # Build and push image to Google Container Registry
     - name: Build
