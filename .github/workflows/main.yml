@@ -39,9 +39,9 @@ on:
     branches:
       - develop
 env:
-  PROJECT_ID: ${{ secrets.PROJECT_ID_DEV }}
+  PROJECT_ID: ${{ secrets.RUN_PROJECT }}
   RUN_REGION: us-east4
-  SA_KEY_JSON: '${{ secrets.SERVICE_ACCOUNT_CREDS_DEV }}'
+  SA_KEY_JSON: '${{ secrets.RUN_SA_KEY }}'
 jobs:
   deploy:
     name: Deploy to Cloud Run
@@ -53,7 +53,7 @@ jobs:
       - id: 'auth'
         uses: 'google-github-actions/auth@v0'
         with:
-          credentials_json: '${{ secrets.SERVICE_ACCOUNT_CREDS_DEV }}'
+          credentials_json: '${{ secrets.RUN_SA_KEY }}'
 
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v0'
