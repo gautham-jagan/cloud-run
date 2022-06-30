@@ -35,6 +35,7 @@
 
 name: Deploy to Cloud Run
 on:
+  workflow_dispatch:
   push:
     branches:
       - develop
@@ -42,6 +43,7 @@ env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
   RUN_REGION: us-east4
   SA_KEY_JSON: '${{ secrets.RUN_SA_KEY }}'
+  
 jobs:
   deploy:
     name: Deploy to Cloud Run
